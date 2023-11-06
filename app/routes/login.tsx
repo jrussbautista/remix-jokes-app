@@ -39,7 +39,6 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   const redirectTo = validateUrl(
     (form.get('redirectTo') as string) || '/jokes'
   );
-  console.log('redirectTo', redirectTo);
   if (
     typeof loginType !== 'string' ||
     typeof password !== 'string' ||
