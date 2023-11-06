@@ -1,6 +1,7 @@
 import type { ActionFunctionArgs, LoaderFunctionArgs } from '@remix-run/node';
 import { json, redirect } from '@remix-run/node';
 import {
+  Form,
   Link,
   isRouteErrorResponse,
   useLoaderData,
@@ -56,11 +57,11 @@ export default function JokeRoute() {
       <p>{joke.content}</p>
       <Link to=".">"{joke.name}" Permalink</Link>
       {isOwner ? (
-        <form method="post">
+        <Form method="post">
           <button className="button" name="intent" type="submit" value="delete">
             Delete
           </button>
-        </form>
+        </Form>
       ) : null}
     </div>
   );
