@@ -1,5 +1,5 @@
-import { cssBundleHref } from "@remix-run/css-bundle";
-import type { LinksFunction } from "@remix-run/node";
+import { cssBundleHref } from '@remix-run/css-bundle';
+import type { LinksFunction } from '@remix-run/node';
 import {
   Links,
   LiveReload,
@@ -7,10 +7,24 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-} from "@remix-run/react";
+} from '@remix-run/react';
+import globalLargeStylesUrl from '~/styles/global-large.css';
+import globalMediumStylesUrl from '~/styles/global-medium.css';
+import globalStylesUrl from '~/styles/global.css';
 
 export const links: LinksFunction = () => [
-  ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
+  ...(cssBundleHref ? [{ rel: 'stylesheet', href: cssBundleHref }] : []),
+  { rel: 'stylesheet', href: globalStylesUrl },
+  {
+    rel: 'stylesheet',
+    href: globalMediumStylesUrl,
+    media: 'print, (min-width: 640px)',
+  },
+  {
+    rel: 'stylesheet',
+    href: globalLargeStylesUrl,
+    media: 'screen and (min-width: 1024px)',
+  },
 ];
 
 export default function App() {
